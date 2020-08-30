@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Su dung remote de dieu khien tivi</title>
+</head>
+<body>
+    <script>
+
+        let Remote = function (code) {
+            this.code = code;
+            this.changeChannel = function (tivi, channel) {
+                tivi.changeChannel(channel);
+            }
+            this.changeVolume = function (tivi, volume) {
+                tivi.changeVolume(volume);
+            }
+            this.openCloseTivi = function (tivi){
+                tivi.openCloseTivi();
+            }
+        }
+        let Tivi = function (channel, volume, status) {
+            this.channel = channel;
+            this.volume = volume;
+            this.status = status;
+
+            this.changeVolume = function (volume) {
+                this.volume = volume;
+            }
+            this.changeChannel = function (newChannel) {
+                this.channel = newChannel;
+            }
+            this.openCloseTivi = function (){
+                this.status = !this.status;
+            }
+        }
+        let tivi = new Tivi(1,10,false);
+        let remote = new Remote(1);
+
+        tivi.openCloseTivi();
+        tivi.changeChannel(7);
+        remote.changeChannel(tivi,3);
+        remote.changeVolume(tivi,12);
+        remote.openCloseTivi(tivi);
+    </script>
+</body>
+</html>
